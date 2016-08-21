@@ -4,8 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>豆瓣一刻</title>
-	<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="./less/main.less">
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet/less" href="./public/less/main.less">
+	<script src="./public/libs/less.js"></script>
 </head>
 <body>
 	<div class="viewport">
@@ -13,7 +14,7 @@
 			<dl>
 				<dt class="login">
 					<div class="avatar">
-						<img src="./images/avatar.png" alt="">
+						<img src="./public/images/avatar.png" alt="">
 					</div>
 					<span>登录</span>
 				</dt>
@@ -57,27 +58,69 @@
 			<!-- 头部 -->
 			<div class="header">
 				<a href="javascript:;" class="menu icon-menu"></a>
-				<h2>设置</h2>
+				<h2>热门作者</h2>
 				<a href="javascript:;" class="search icon-search"></a>
 			</div>
 			<!-- 主体 -->
 			<div class="body">
-				<div class="settings">
-					<ul>
-						<li>字体大小</li>
-						<li>WiFi下自动离线</li>
-					</ul>
-					<ul>
-						<li>绑定微博账号</li>
-					</ul>
-					<ul>
-						<li>清理缓存</li>
-					</ul>
-					<ul>
-						<li>意见反馈</li>
-						<li>关于</li>
-					</ul>
-				</div>
+				<dl class="author">
+					<dt>本周推荐</dt>
+					<dd>
+						<div class="avatar">
+							<img src="./uploads/avatar_1.png" alt="">
+						</div>
+						<div class="info">
+							<h5>深焦</h5>
+							<p>我们在全世界和你看电影</p>
+						</div>
+					</dd>
+					<dd>
+						<div class="avatar">
+							<img src="./uploads/avatar_2.png" alt="">
+						</div>
+						<div class="info">
+							<h5>尉迟上九</h5>
+							<p>偏执的电影爱好者</p>
+						</div>
+					</dd>
+					<dd>
+						<div class="avatar">
+							<img src="./uploads/avatar_3.png" alt="">
+						</div>
+						<div class="info">
+							<h5>风行水上</h5>
+							<p>本名高军，画家</p>
+						</div>
+					</dd>
+					<dd>
+						<div class="avatar">
+							<img src="./uploads/avatar_1.png" alt="">
+						</div>
+						<div class="info">
+							<h5>深焦</h5>
+							<p>我们在全世界和你看电影</p>
+						</div>
+					</dd>
+					<dt>热门作者</dt>
+					<dd>
+						<div class="avatar">
+							<img src="./uploads/avatar_3.png" alt="">
+						</div>
+						<div class="info">
+							<h5>风行水上</h5>
+							<p>本名高军，画家</p>
+						</div>
+					</dd>
+					<dd>
+						<div class="avatar">
+							<img src="./uploads/avatar_2.png" alt="">
+						</div>
+						<div class="info">
+							<h5>尉迟上九</h5>
+							<p>偏执的电影爱好者</p>
+						</div>
+					</dd>
+				</dl>
 			</div>
 		</div>
 	</div>
