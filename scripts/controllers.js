@@ -4,7 +4,7 @@ angular.module('controllers', [])
 .controller('TodayController', ['$scope', '$http', function($scope, $http){
 	$http({
 		method: 'get',
-		url: '/proxy.php',
+		url: './proxy.php',
 	})
 	.success(function (data) {
 		$scope.data = data;
