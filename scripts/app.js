@@ -1,11 +1,12 @@
 
 // 入口文件
-var App = angular.module('App', ['ngRoute']);
+var App = angular.module('App', ['ngRoute', 'controllers']);
 
 // 配置路由
 App.config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/', {
 		templateUrl: 'views/today.html',
+		controller: 'TodayController'
 	}).when('/list', {
 		templateUrl: 'views/list.html'
 	}).when('/author', {
@@ -23,7 +24,7 @@ App.config(['$routeProvider', function($routeProvider) {
 	});
 }]);
 
-App.controller('NavsCtroller', function ($scope) {
+App.controller('NavsController', function ($scope) {
 
 	$scope.navs = [
 		{url: '#/', text: '今日一刻', icon: 'icon-home'},

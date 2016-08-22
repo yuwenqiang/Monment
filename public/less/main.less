@@ -300,6 +300,10 @@
 				font-size: 22rem / 32;
 				padding-right: 140rem / 32;
 			}
+
+			p.only {
+				padding-right: 0;
+			}
 		}
 
 		.thumb {
@@ -314,6 +318,7 @@
 		.gallery {
 			text-align: justify;
 			font-size: 0;
+			overflow: hidden;
 
 			&:after {
 				content: '';
@@ -354,13 +359,15 @@
 		.thumb {
 			width: (240rem / 32);
 			height: (240rem / 32);
+			overflow: hidden;
 		}
 
 		.gallery {
+			height: (346rem / 32);
 			padding-top: (18rem / 32);
 			padding-right: (18rem / 32);
 			background: url(../images/gallery.png);
-			background-size: cover;
+			background-size: contain;
 			.box-sizing;
 		}
 	}
