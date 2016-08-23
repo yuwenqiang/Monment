@@ -13,15 +13,16 @@
 	<script src="./scripts/app.js"></script>
 	<script src="./scripts/controllers.js"></script>
 	<script src="./scripts/directives.js"></script>
+	<script src="./scripts/services.js"></script>
 </head>
 <body>
 	<div class="viewport">
 		<!-- 侧边导航 -->
 		<div ng-include="'./views/navs.html'" ng-controller="NavsController"></div>
-		<div class="container">
+		<div ng-class="{container: true, collapse: collapsed}">
 			<!-- 头部 -->
 			<div class="header">
-				<a href="javascript:;" class="menu icon-menu"></a>
+				<a href="javascript:;" ng-click="toggle()" class="menu icon-menu"></a>
 				<h2>{{title}}</h2>
 				<a href="javascript:;" class="search icon-search"></a>
 			</div>

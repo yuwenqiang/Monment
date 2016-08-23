@@ -17,10 +17,33 @@ angular.module('controllers', [])
 		{url: '#/favourite', text: '我的喜欢', icon: 'icon-heart'},
 		{url: '#/settings', text: '设置', icon: 'icon-cog'}
 	];
+
 }])
 
 // 今日一刻
 .controller('TodayController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
+	
+	$rootScope.loaded = false;
+
+	// Ajax请求数据
+	$http({
+		method: 'get',
+		url: './proxy.php',
+	})
+	.success(function (data) {
+		$scope.data = data;
+
+		$rootScope.loaded = true;
+	})
+	.error(function () {
+
+	});
+
+}])
+
+.controller('OlderController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
+	$rootScope.loaded = false;
+
 	// Ajax请求数据
 	$http({
 		method: 'get',

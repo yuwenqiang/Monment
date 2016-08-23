@@ -6,10 +6,11 @@
 */
 angular.module('directives', [])
 
+// 正在加载...
 .directive('loading', function () {
 	return {
 		restrict: 'EAC',
 		template: '<img src="" alt="" />',
 		replace: true
 	}
-});
+})

@@ -1,6 +1,6 @@
 
 // 入口文件
-var App = angular.module('App', ['ngRoute', 'controllers', 'directives']);
+var App = angular.module('App', ['ngRoute', 'controllers', 'directives', 'services']);
 
 // 配置路由
 App.config(['$routeProvider', function($routeProvider) {
@@ -11,7 +11,8 @@ App.config(['$routeProvider', function($routeProvider) {
 	})
 	// 往期内容
 	.when('/older', {
-		templateUrl: 'views/older.html'
+		templateUrl: 'views/older.html',
+		controller: 'OlderController'
 	})
 	// 热门作者
 	.when('/author', {
@@ -40,7 +41,31 @@ App.config(['$routeProvider', function($routeProvider) {
 
 }]);
 
-App.run(['$rootScope', function ($rootScope) {
+App.run(['$rootScope', function ($rootScope, collapse) {
 	$rootScope.loaded = false;
 	$rootScope.title = '今日一刻';
+
+	$rootScope.collapsed = false;
+
+	$rootScope.toggle = function () {
+		$rootScope.collapsed = !$rootScope.collapsed;
+
+		var navs = document.querySelectorAll('.navs dd');
+
+		if($rootScope.collapsed) {
+			for(var i=0; i<navs.length; i++) {
+				navs[i].style.transitionDuration = (i + 1) * 0.15 + 's';
+				navs[i].style.transitionDelay = '0.2s';
+				navs[i].style.transform = 'translate(0)';
+			}
+		} else {
+			for(var i=navs.length - 1; i>=0; i--) {
+				navs[i].style.transitionDuration = (navs.length - i + 1) * 0.05 + 's';
+				navs[i].style.transitionDelay = '';
+				navs[i].style.transform = 'translate(-100%)';
+			}
+		}
+
+		
+	}
 }]);

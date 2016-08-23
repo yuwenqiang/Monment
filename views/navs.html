@@ -1,5 +1,5 @@
 <!-- 侧边导航 -->
-<div class="navs">
+<div ng-class="{navs: true, collapse: collapsed}">
 	<dl>
 		<dt class="login">
 			<div class="avatar">
@@ -7,7 +7,7 @@
 			</div>
 			<span>登录</span>
 		</dt>
-		<dd class="active" ng-repeat="nav in navs">
+		<dd class="active" ng-click="toggle()" ng-repeat="nav in navs">
 			<a href="{{ nav.url }}" class="{{ nav.icon }}">
 				<span>{{ nav.text }}</span>
 			</a>
