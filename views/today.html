@@ -11,10 +11,10 @@
 				<div class="brief" ng-switch="{{post.display_style}}">
 					<p ng-if="post.display_style !== 10003" ng-class="{only: post.display_style === 10001}">{{post.abstract}}</p>
 					<div class="thumb" ng-switch-when="10002">
-						<img src="{{post.thumbs[0].medium.url}}" alt="">
+						<img ng-src="{{post.thumbs[0].medium.url}}" alt="">
 					</div>
 					<div class="gallery" ng-switch-when="10003">
-						<img src="{{post.thumbs[0].small.url}}" alt="">
+						<img ng-src="{{post.thumbs[0].small.url}}" alt="">
 					</div>
 				</div>							
 			</div>

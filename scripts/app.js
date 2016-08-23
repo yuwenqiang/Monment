@@ -1,37 +1,46 @@
 
 // 入口文件
-var App = angular.module('App', ['ngRoute', 'controllers']);
+var App = angular.module('App', ['ngRoute', 'controllers', 'directives']);
 
 // 配置路由
 App.config(['$routeProvider', function($routeProvider) {
+	// 今日一刻
 	$routeProvider.when('/', {
 		templateUrl: 'views/today.html',
 		controller: 'TodayController'
-	}).when('/list', {
-		templateUrl: 'views/list.html'
-	}).when('/author', {
-		templateUrl: 'views/author.html'
-	}).when('/category', {
-		templateUrl: 'views/category.html'
-	}).when('/center', {
-		templateUrl: 'views/center.html'
-	}).when('/favourite', {
-		templateUrl: 'views/favourite.html'
-	}).when('/older', {
+	})
+	// 往期内容
+	.when('/older', {
 		templateUrl: 'views/older.html'
-	}).when('/settings', {
+	})
+	// 热门作者
+	.when('/author', {
+		templateUrl: 'views/author.html'
+	})
+	// 个人中心（作者）
+	.when('/center', {
+		templateUrl: 'views/center.html'
+	})
+	// 栏目浏览
+	.when('/category', {
+		templateUrl: 'views/category.html'
+	})
+	// 栏目列表
+	.when('/list', {
+		templateUrl: 'views/list.html'
+	})
+	// 我的喜欢
+	.when('/favourite', {
+		templateUrl: 'views/favourite.html'
+	})
+	// 设置
+	.when('/settings', {
 		templateUrl: 'views/settings.html'
 	});
+
 }]);
 
-App.controller('NavsController', function ($scope) {
-
-	$scope.navs = [
-		{url: '#/', text: '今日一刻', icon: 'icon-home'},
-		{url: '#/older', text: '往期内容', icon: 'icon-file-empty'},
-		{url: '#/author', text: '热门作者', icon: 'icon-pencil'},
-		{url: '#/category', text: '栏目浏览', icon: 'icon-menu'},
-		{url: '#/favourite', text: '我的喜欢', icon: 'icon-heart'},
-		{url: '#/settings', text: '设置', icon: 'icon-cog'},
-	];
-});
+App.run(['$rootScope', function ($rootScope) {
+	$rootScope.loaded = false;
+	$rootScope.title = '今日一刻';
+}]);

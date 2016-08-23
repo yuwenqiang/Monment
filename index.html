@@ -12,6 +12,7 @@
 	<script src="./bower_components/angular-animate/angular-animate.js"></script>
 	<script src="./scripts/app.js"></script>
 	<script src="./scripts/controllers.js"></script>
+	<script src="./scripts/directives.js"></script>
 </head>
 <body>
 	<div class="viewport">
@@ -21,11 +22,12 @@
 			<!-- 头部 -->
 			<div class="header">
 				<a href="javascript:;" class="menu icon-menu"></a>
-				<h2>今日一刻</h2>
+				<h2>{{title}}</h2>
 				<a href="javascript:;" class="search icon-search"></a>
 			</div>
 			<!-- 主体 -->
 			<div class="body">
+				<div yk-loading ng-if="!loaded" class="loading" ng-src="./public/images/loading.gif"></div>
 				<div ng-view></div>
 			</div>
 		</div>
