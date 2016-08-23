@@ -16,7 +16,8 @@ App.config(['$routeProvider', function($routeProvider) {
 	})
 	// 热门作者
 	.when('/author', {
-		templateUrl: 'views/author.html'
+		templateUrl: 'views/author.html',
+		controller: 'AuthorController'
 	})
 	// 个人中心（作者）
 	.when('/center', {
@@ -42,7 +43,7 @@ App.config(['$routeProvider', function($routeProvider) {
 }]);
 
 App.run(['$rootScope', function ($rootScope, collapse) {
-	
+
 	$rootScope.loaded = false;
 
 	$rootScope.collapsed = false;
