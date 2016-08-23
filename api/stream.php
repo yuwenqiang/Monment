@@ -1,19 +1,30 @@
 <?php
 
 	// PHP代理
+	
+	// 接口
+	$pathName = 'https://moment.douban.com/api/stream/date/';
 
-	$config = array(
-		'alt' => 'json',
-		'apikey' => '0bcf52793711959c236df76ba534c0d4',
-		'app_version' => '1.7.4',
-		'douban_udid' => 'd623045db9fcb0d5243174c1bf1a675f887047c0',
-		'format' => 'full',
-		'udid' => '9a34d8b038ff38971050199b0c5ee9c60c6d1ca3',
-		'version' => 6
-	);
+	// 请求参数
+	$queryString = '?alt=json&apikey=0bcf52793711959c236df76ba534c0d4&app_version=1.7.4&douban_udid=d623045db9fcb0d5243174c1bf1a675f887047c0&format=full&udid=9a34d8b038ff38971050199b0c5ee9c60c6d1ca3&version=6';
 
-	// 今日一刻
-	$url = 'https://moment.douban.com/api/stream/date/2016-08-23?alt=json&apikey=0bcf52793711959c236df76ba534c0d4&app_version=1.7.4&douban_udid=d623045db9fcb0d5243174c1bf1a675f887047c0&format=full&udid=9a34d8b038ff38971050199b0c5ee9c60c6d1ca3&version=6';
+	// 日期，未传，则取当日
+	// $date = isset($_POST['date']) ? $_POST['date'] : date('Y-m-d', time());
+
+	$day = isset($_GET['day']) ? $_GET['day'] : 0;
+
+	$date = date('Y-m-d', strtotime($day . 'day'));
+
+	$day--;
+
+	// 拼凑参数
+	$url = $pathName . $date . $queryString;
+
+	$result = file_get_contents($url);
+
+	$result = json_decode($result);
+
+	echo json_encode(array('day'=>$day, 'result'=>$result));
 
 	// 往期内容
 	// $url = 'https://moment.douban.com/api/stream/date/2016-08-20?alt=json&apikey=0bcf52793711959c236df76ba534c0d4&app_version=1.7.4&douban_udid=d623045db9fcb0d5243174c1bf1a675f887047c0&format=full&udid=9a34d8b038ff38971050199b0c5ee9c60c6d1ca3&version=6';
@@ -54,10 +65,6 @@
 
 	// https://moment.douban.com/api/column/48/posts?alt=json&apikey=0bcf52793711959c236df76ba534c0d4&app_version=1.7.4&douban_udid=d623045db9fcb0d5243174c1bf1a675f887047c0&max_id=142703&udid=9a34d8b038ff38971050199b0c5ee9c60c6d1ca3&version=6
 
-	$result = file_get_contents($url);
-
-
-	echo $result;
 
 
 

@@ -42,8 +42,8 @@ App.config(['$routeProvider', function($routeProvider) {
 }]);
 
 App.run(['$rootScope', function ($rootScope, collapse) {
+	
 	$rootScope.loaded = false;
-	$rootScope.title = '今日一刻';
 
 	$rootScope.collapsed = false;
 
@@ -53,19 +53,20 @@ App.run(['$rootScope', function ($rootScope, collapse) {
 		var navs = document.querySelectorAll('.navs dd');
 
 		if($rootScope.collapsed) {
+
 			for(var i=0; i<navs.length; i++) {
-				navs[i].style.transitionDuration = (i + 1) * 0.15 + 's';
 				navs[i].style.transitionDelay = '0.2s';
 				navs[i].style.transform = 'translate(0)';
+				navs[i].style.transitionDuration = (i + 1) * 0.15 + 's';
 			}
+
 		} else {
+			
 			for(var i=navs.length - 1; i>=0; i--) {
-				navs[i].style.transitionDuration = (navs.length - i + 1) * 0.05 + 's';
 				navs[i].style.transitionDelay = '';
 				navs[i].style.transform = 'translate(-100%)';
+				navs[i].style.transitionDuration = (navs.length - i + 1) * 0.05 + 's';
 			}
 		}
-
-		
 	}
 }]);

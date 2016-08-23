@@ -22,17 +22,19 @@ angular.module('controllers', [])
 
 // 今日一刻
 .controller('TodayController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
-	
+	// 显示加载图标
 	$rootScope.loaded = false;
 
 	// Ajax请求数据
 	$http({
 		method: 'get',
-		url: './proxy.php',
+		url: './api/stream.php'
 	})
 	.success(function (data) {
-		$scope.data = data;
+		// 添加数据
+		$scope.data = data.result;
 
+		// 隐藏图标
 		$rootScope.loaded = true;
 	})
 	.error(function () {
@@ -41,16 +43,31 @@ angular.module('controllers', [])
 
 }])
 
+// 往期内容
 .controller('OlderController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
+	// 开启加载图标
 	$rootScope.loaded = false;
+	$rootScope.title = '往期内容';
+
+	$scope.day = -1;
+
+	// 数据以天计
+	$scope.items = [];
 
 	// Ajax请求数据
 	$http({
 		method: 'get',
-		url: './proxy.php',
+		url: './api/stream.php',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded'
+		},
+		params: {
+			day: $scope.day
+		}
 	})
 	.success(function (data) {
-		$scope.data = data;
+		
+		$scope.items.push(data.result);
 
 		$rootScope.loaded = true;
 	})
