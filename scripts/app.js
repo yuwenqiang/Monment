@@ -43,16 +43,28 @@ App.config(['$routeProvider', function($routeProvider) {
 }]);
 
 App.run(['$rootScope', function ($rootScope, collapse) {
-
+	// 显示加载图标
 	$rootScope.loaded = false;
 
+	// 侧边栏打开状态（未打开）
 	$rootScope.collapsed = false;
 
-	$rootScope.toggle = function () {
+	// 侧边栏索引
+	$rootScope.index = 0;
+
+	$rootScope.toggle = function (index) {
+		// 切换侧边栏状态
 		$rootScope.collapsed = !$rootScope.collapsed;
 
+		// 获取所有导航
 		var navs = document.querySelectorAll('.navs dd');
 
+		// 设置当前导航状态
+		document.querySelector('.navs dd.active').classList.remove('active');
+
+		navs[$rootScope.index].classList.add('active');
+
+		// 设置动国效果
 		if($rootScope.collapsed) {
 
 			for(var i=0; i<navs.length; i++) {

@@ -7,7 +7,7 @@
 			</div>
 			<span>登录</span>
 		</dt>
-		<dd class="active" ng-click="toggle()" ng-repeat="nav in navs">
+		<dd ng-class="{active: $first}" ng-click="toggle($index)" ng-repeat="nav in navs">
 			<a href="{{ nav.url }}" class="{{ nav.icon }}">
 				<span>{{ nav.text }}</span>
 			</a>

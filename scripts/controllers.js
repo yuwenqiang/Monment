@@ -25,6 +25,12 @@ angular.module('controllers', [])
 	// 显示加载图标
 	$rootScope.loaded = false;
 
+	// 更换标题
+	$rootScope.title = '今日一刻';
+
+	// 当前导航索引
+	$rootScope.index = 0;
+
 	// Ajax请求数据
 	$http({
 		method: 'get',
@@ -50,6 +56,9 @@ angular.module('controllers', [])
 
 	// 更换标题
 	$rootScope.title = '往期内容';
+
+	// 当前导航索引
+	$rootScope.index = 1;
 
 	// 获取前n天的数据
 	$scope.day = -1;
@@ -86,6 +95,9 @@ angular.module('controllers', [])
 	// 更换标题
 	$rootScope.title = '热门作者';
 
+	// 当前导航索引
+	$rootScope.index = 2;
+
 	// Ajax请求
 	$http({
 		method: 'get',
@@ -95,7 +107,7 @@ angular.module('controllers', [])
 	.success(function (data) {
 		// 推荐作者
 		$scope.rec = data.rec;
-		
+
 		// 热门作者
 		$scope.all = data.all;
 
