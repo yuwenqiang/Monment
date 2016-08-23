@@ -47,8 +47,11 @@ angular.module('controllers', [])
 .controller('OlderController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
 	// 开启加载图标
 	$rootScope.loaded = false;
+
+	// 更换标题
 	$rootScope.title = '往期内容';
 
+	// 获取前n天的数据
 	$scope.day = -1;
 
 	// 数据以天计
@@ -58,20 +61,45 @@ angular.module('controllers', [])
 	$http({
 		method: 'get',
 		url: './api/stream.php',
-		headers: {
-			'Content-Type': 'application/x-www-form-urlencoded'
-		},
 		params: {
+			// 以当天计算，获取前n天的数据
 			day: $scope.day
 		}
 	})
 	.success(function (data) {
-		
+		// 往期内容，后续要分页
 		$scope.items.push(data.result);
 
+		// 隐藏加载图标
 		$rootScope.loaded = true;
 	})
 	.error(function () {
 
+	});
+}])
+
+// 热门作者
+.controller('AuthorController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
+	// 显示加载图标
+	$rootScope.loaded = false;
+
+	// 更换标题
+	$rootScope.title = '热门作者';
+
+	// Ajax请求
+	$http({
+		method: 'get',
+		url: './api/author.php',
+		params: {}
+	})
+	.success(function (data) {
+		// 推荐作者
+		$scope.rec = data.rec;
+		
+		// 热门作者
+		$scope.all = data.all;
+
+		// 隐藏加载图标
+		$rootScope.loaded = true;
 	});
 }])
