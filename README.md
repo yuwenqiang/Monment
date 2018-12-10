@@ -1,2 +1,2 @@
 # Monment
-仿豆瓣一刻APP
+豆瓣一刻APP
